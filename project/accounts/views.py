@@ -51,7 +51,7 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f'欢迎回来, {username}!')
-                return render(request,'index.html')  # 重定向到主页
+                return render(request,'page.html')  # 重定向到主页
             else:
                 messages.error(request, '用户名或密码不正确')
     else:
