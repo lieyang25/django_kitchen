@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import register_view, login_view, logout_view
 from . import views
+
+app_name = 'accounts'  # 设置命名空间
+
 urlpatterns = [
     path('',views.index,name='index'),
     path('register/', register_view, name='register'),
