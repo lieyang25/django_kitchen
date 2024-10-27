@@ -1,0 +1,60 @@
+
+/* 全局样式 */
+html {
+    background-color: #00539f;
+}
+
+body {
+    font-family: 'YourFont', sans-serif; /* 如果字体加载失败，会回退到 sans-serif */
+    width: 600px;
+    margin: 0 auto;
+    background-color: #ff9500;
+    padding: 0 20px 20px 20px;
+    border: 5px solid black;
+}
+
+/* 元素选择器 */
+h1 {
+    font-size: 60px;
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+    color: #00539f;
+    text-shadow: 3px 3px 1px black;
+}
+
+p,
+li {
+    font-size: 16px;
+    line-height: 2;
+    letter-spacing: 1px;
+}
+
+ul {
+    color: #369ddd;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+/* ID 选择器 */
+#cl {
+    background-color: yellow;
+}
+
+/* 类选择器 */
+.my-class {
+    font-size: 20px;
+}
+
+/* 属性选择器 */
+img[src] {
+    border: 2px solid black;
+}
+
+/* 伪类选择器 */
+a:hover {
+    color: #bada55;
+}

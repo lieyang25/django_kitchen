@@ -1,0 +1,37 @@
+<!doctype html>
+{% load static %}
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <title>起始界面</title>
+  </head>
+  <body>
+    <p>凉宫春日的web</p>
+    <img src="{% static 'images/suzumiya.jpg' %}" alt="凉宫春日" />
+    <!--<img src="images/suzumiya.jpg" alt="凉宫春日" />-->
+    <p>Let`s try it!</p>
+
+    <h1>欢迎来到首页！</h1>
+
+    <!-- 注册按钮 -->
+    <a href="{% url 'register' %}">
+        <button>注册</button>
+    </a>
+
+    <!-- 登录按钮 -->
+    <a href="{% url 'login' %}">
+        <button>登录</button>
+    </a>
+
+    <!-- 注销按钮 -->
+    <a href="{% url 'logout' %}">
+        <button>注销</button>
+    </a>
+    <p><a href="https://github.com/lieyang25/webweb">webweb</a></p>
+
+    <!--<script src="scripts/main.js"></script>-->
+    <script src="{% static 'scripts/main.js' %}"></script>
+  </body>
+</html>
