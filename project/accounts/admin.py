@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Talk,Entry
+from .models import Pizza,Entry
 # Register your models here.
-admin.site.register(Talk)
+admin.site.register(Pizza)
 admin.site.register(Entry)

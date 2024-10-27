@@ -4,6 +4,25 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from .forms import SignUpForm, LoginForm
 
+from django.shortcuts import render
+from .models import Pizza
+
+#新的
+def page(request):
+    """披萨店主页"""
+    return render(request,'page.html')
+
+def pizzas(request):
+    pizzas = Pizza.objects.order_by('time_added')
+    context = {'pizzas':pizzas}
+    return render(request,'pizzas.html',context)
+
+def pizza(request,pizza_id):
+    pizza = Pizza.objects.get(id=pizza_id)
+    entries = pizza.entry_set.order_by('-date_added')
+    context = {'pizza':pizza,'entries':entries}
+    return render(request,'pizza.html',context)
+#旧的
 def index(request):
     return render(request,'index.html')
 # 用户注册视图
