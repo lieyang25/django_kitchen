@@ -6,9 +6,9 @@ app_name = 'accounts'  # 设置命名空间
 
 urlpatterns = [
     path('',views.index,name='index'),
-    path('register/', register_view, name='register'),
-    path('login/', login_view, name='login'),
-    path('logout/', logout_view, name='logout'),
+    path('register/', views.register_view, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
     #新加入的
     path('page/',views.page,name='page'),
     path('pizzas/',views.pizzas,name='pizzas'),
