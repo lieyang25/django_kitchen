@@ -1,8 +1,10 @@
+from lib2to3.fixes.fix_input import context
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from .forms import SignUpForm, LoginForm
+from .forms import SignUpForm, LoginForm, FoodForm
 
 from django.shortcuts import render
 from .models import Pizza
@@ -63,3 +65,15 @@ def logout_view(request):
     logout(request)
     messages.success(request, '您已成功登出！')
     return render(request,'index.html')  # 重定向到主页
+
+def new_food(request):
+    if request.method != 'POST':
+        form = FoodForm()
+    else:
+        form = FoodForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:pizzas')
+
+    context = {'form':form}
+    return render(request,'',context)
