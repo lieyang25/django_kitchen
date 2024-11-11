@@ -10,6 +10,9 @@
     <P>Pizza:{{pizza.name}}</P>
 
     <p>Entry:</p>
+    <p>
+        <a href="{% url 'accounts:new_entry' pizza.id %}">添加条目</a>
+    </p>
     <ul>
       {% for entry in entries %}
         <li>
