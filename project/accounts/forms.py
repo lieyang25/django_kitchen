@@ -2,6 +2,9 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
+from project.accounts.models import Pizza
+
+
 # 用户注册表单
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -14,3 +17,9 @@ class SignUpForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(max_length=254)
     password = forms.CharField(label="Password", widget=forms.PasswordInput)
+
+class FoodForm(forms.ModelForm):
+    class Meta:
+        model = Pizza
+        fields = ['text']
+        labels = {'text':''}
