@@ -7,15 +7,17 @@
 <body>
   {% extends 'base2.html' %}
   {% block content %}
-    <P>Pizzas</P>
+    <P>Pizza:{{pizza.name}}</P>
+
+    <p>Entry:</p>
     <ul>
-      {% for pizza in pizzas %}
+      {% for entry in entries %}
         <li>
-          <a href="{% url 'accounts:pizza' pizza.id %}">
-            {{pizza.name}}</a>
+            <P>{{entry.date_added|date:'M d, Y H:i'}}</P>
+            <p>{{entry.text|linebreaks}}</p>
         </li>
       {% empty %}
-        <li>No Pizza have been added yet.</li>
+        <li>There no entries for this pizza yet.</li>
       {% endfor %}
     </ul>
   {% endblock content %}
