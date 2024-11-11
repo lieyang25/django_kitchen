@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
-from project.accounts.models import Pizza
+from .models import Pizza
 
 
 # 用户注册表单
@@ -21,5 +21,5 @@ class LoginForm(AuthenticationForm):
 class FoodForm(forms.ModelForm):
     class Meta:
         model = Pizza
-        fields = ['text']
-        labels = {'text':''}
+        fields = ['name']
+        labels = {'name':''}

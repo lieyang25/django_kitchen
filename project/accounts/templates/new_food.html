@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% extends 'base2.html' %}
+  {% block content %}
+    <P>添加新菜单：</P>
+      <form action="{% url 'accounts:new_food' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <botton name="submit">添加</botton>
+      </form>
+  {% endblock content %}
+</body>
+</html>
