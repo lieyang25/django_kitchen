@@ -8,6 +8,7 @@
   {% extends 'base2.html' %}
   {% block content %}
     <P>Pizzas</P>
+  <a href="{% url 'accounts:new_food'%}">添加新菜单</a>
     <ul>
       {% for pizza in pizzas %}
         <li>
@@ -18,7 +19,6 @@
         <li>No Pizza have been added yet.</li>
       {% endfor %}
     </ul>
-  <a href="{% url 'accounts:new_food'%}">添加新菜单</a>
   {% endblock content %}
 </body>
 </html>
