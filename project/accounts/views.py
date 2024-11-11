@@ -76,4 +76,4 @@ def new_food(request):
             return redirect('accounts:pizzas')
 
     context = {'form':form}
-    return render(request,'',context)
+    return render(request,'new_food.html',context)
