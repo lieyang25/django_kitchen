@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from .forms import SignUpForm, LoginForm, FoodForm
+from .forms import SignUpForm, LoginForm, FoodForm, EntryForm
 
 from django.shortcuts import render
 from .models import Pizza
@@ -77,3 +77,19 @@ def new_food(request):
 
     context = {'form':form}
     return render(request,'new_food.html',context)
+
+def new_entry(request,pizza_id):
+    pizza = Pizza.objects.get(id=pizza_id)
+    if request.method != 'POST':
+        form = EntryForm()
+    else:
+        form = EntryForm(data=request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.pizza = pizza
+            new_entry.save()
+            return redirect('accounts:pizza',pizza_id = pizza_id)
+
+    context = {'pizza':pizza,'form':form}
+    return render(request,'new_entry.html',context)
+
