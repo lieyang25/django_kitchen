@@ -12,5 +12,6 @@ urlpatterns = [
     #新加入的
     path('page/',views.page,name='page'),
     path('pizzas/',views.pizzas,name='pizzas'),
-    path('pizzas/<int:pizza_id>',views.pizza,name='pizza')
+    path('pizzas/<int:pizza_id>',views.pizza,name='pizza'),
+    path('new_food/',views.new_food,name='new_food'),
 ]
