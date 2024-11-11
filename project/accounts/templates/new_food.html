@@ -11,7 +11,7 @@
       <form action="{% url 'accounts:new_food' %}" method="POST">
         {% csrf_token %}
         {{ form.as_div }}
-        <botton name="submit">添加</botton>
+        <button name="submit">添加</button>
       </form>
   {% endblock content %}
 </body>
