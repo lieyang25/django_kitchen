@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% extends 'base2.html' %}
+  {% block content %}
+    <P><a href="{% url 'accounts:pizza' pizza.id %}">{{pizza}}</a></P>
+    <p>修改条目:</p>
+      <form action="{% url 'accounts:edit_entry' entry.id%}" method='POST'>
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button name="submit">保存修改</button>
+      </form>
+  {% endblock content %}
+</body>
+</html>
