@@ -7,7 +7,7 @@ from django.contrib import messages
 from .forms import SignUpForm, LoginForm, FoodForm, EntryForm
 
 from django.shortcuts import render
-from .models import Pizza
+from .models import Pizza, Entry
 
 #新的
 def page(request):
@@ -65,7 +65,7 @@ def logout_view(request):
     logout(request)
     messages.success(request, '您已成功登出！')
     return render(request,'index.html')  # 重定向到主页
-
+#添加话题
 def new_food(request):
     if request.method != 'POST':
         form = FoodForm()
@@ -77,7 +77,7 @@ def new_food(request):
 
     context = {'form':form}
     return render(request,'new_food.html',context)
-
+#添加条目
 def new_entry(request,pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
     if request.method != 'POST':
@@ -92,4 +92,18 @@ def new_entry(request,pizza_id):
 
     context = {'pizza':pizza,'form':form}
     return render(request,'new_entry.html',context)
+#编辑条目
+def edit_entry(request,entry_id):
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
 
+    if request.method != 'POST':
+        form = EntryForm(instance=entry)
+    else:
+        form = EntryForm(instance=entry,data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:pizza',pizza_id=topic.id)
+
+    context = {'entry':entry,'topic':topic,'form':form}
+    return render(request,'accounts/edit_entry.html',context)
