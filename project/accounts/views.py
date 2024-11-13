@@ -106,4 +106,4 @@ def edit_entry(request,entry_id):
             return redirect('accounts:pizza',pizza_id=topic.id)
 
     context = {'entry':entry,'topic':topic,'form':form}
-    return render(request,'accounts/edit_entry.html',context)
+    return render(request,'edit_entry.html',context)

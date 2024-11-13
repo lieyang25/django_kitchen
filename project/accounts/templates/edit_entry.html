@@ -7,7 +7,7 @@
 <body>
   {% extends 'base2.html' %}
   {% block content %}
-    <P><a href="{% url 'accounts:pizza' pizza.id %}">{{pizza}}</a></P>
+    <P><a href="{% url 'accounts:pizza' topic.id %}">{{pizza}}</a></P>
     <p>修改条目:</p>
       <form action="{% url 'accounts:edit_entry' entry.id%}" method='POST'>
         {% csrf_token %}
