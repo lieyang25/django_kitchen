@@ -1,5 +1,6 @@
 from lib2to3.fixes.fix_input import context
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -10,15 +11,16 @@ from django.shortcuts import render
 from .models import Pizza, Entry
 
 #新的
+@login_required
 def page(request):
     """披萨店主页"""
     return render(request,'page.html')
-
+@login_required
 def pizzas(request):
     pizzas = Pizza.objects.order_by('time_added')
     context = {'pizzas':pizzas}
     return render(request,'pizzas.html',context)
-
+@login_required
 def pizza(request,pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
     entries = pizza.entry_set.order_by('-date_added')
@@ -66,6 +68,7 @@ def logout_view(request):
     messages.success(request, '您已成功登出！')
     return render(request,'index.html')  # 重定向到主页
 #添加话题
+@login_required
 def new_food(request):
     if request.method != 'POST':
         form = FoodForm()
@@ -74,10 +77,11 @@ def new_food(request):
         if form.is_valid():
             form.save()
             return redirect('accounts:pizzas')
-
+    #传递数据
     context = {'form':form}
     return render(request,'new_food.html',context)
 #添加条目
+@login_required
 def new_entry(request,pizza_id):
     pizza = Pizza.objects.get(id=pizza_id)
     if request.method != 'POST':
@@ -93,6 +97,7 @@ def new_entry(request,pizza_id):
     context = {'pizza':pizza,'form':form}
     return render(request,'new_entry.html',context)
 #编辑条目
+@login_required
 def edit_entry(request,entry_id):
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
