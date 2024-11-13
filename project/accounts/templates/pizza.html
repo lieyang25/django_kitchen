@@ -18,6 +18,8 @@
         <li>
             <P>{{entry.date_added|date:'M d, Y H:i'}}</P>
             <p>{{entry.text|linebreaks}}</p>
+            <p><a href="{% url 'accounts:edit_entry' entry.id %}">
+                修改条目</a></p>
         </li>
       {% empty %}
         <li>There no entries for this pizza yet.</li>
