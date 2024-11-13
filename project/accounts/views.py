@@ -86,7 +86,7 @@ def new_entry(request,pizza_id):
         form = EntryForm(data=request.POST)
         if form.is_valid():
             new_entry = form.save(commit=False)
-            new_entry.pizza = pizza
+            new_entry.topic = pizza
             new_entry.save()
             return redirect('accounts:pizza',pizza_id = pizza_id)
 
