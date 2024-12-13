@@ -1,12 +1,57 @@
+{% extends 'base2.html' %}
+{% load static %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyKitchen</title>
+    <style>
+        /* 简单的CSS样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            margin: 50px auto;
+            padding: 20px;
+            max-width: 800px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-    {% extends 'base2.html' %}
-    {% block content %}
-    {% endblock content %}
+    <div class="container">
+        <h1>欢迎来到 MyKitchen</h1>
+        <p>探索美味的菜谱和烹饪技巧，让厨房时光变得更有趣！</p>
+        <img src="{% static 'images/suzumiya.jpg' %}" alt="凉宫春日">
+        <footer>
+            &copy; 2024 MyKitchen. All rights reserved.
+        </footer>
+    </div>
 </body>
 </html>
+{% endblock content %}
